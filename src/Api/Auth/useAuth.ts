@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { authLogin } from "../../Queries/Auth/authLogin";
+import { authLogin } from "../../Queries/Auth/auth";
 import { TAuthUser } from "../../Types/Api/auth";
 
 export const useAuthLogin = (

@@ -7,14 +7,8 @@ import Queue from "./View/Sections/Auth/Queue";
 const App: React.FC = () => {
   return (
     <Routes>
-        <Route
-          path="/"
-          element={<Login />}
-        />
-        <Route
-          path="/queue"
-          element={<Queue />} 
-        />
+      <Route path="/" element={<Login />} />
+      <Route path="/queue/:guildId" element={<Queue />} />
     </Routes>
   );
 };

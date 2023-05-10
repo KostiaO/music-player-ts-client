@@ -1,9 +1,10 @@
+import { useParams } from "react-router-dom";
+import TracksGroup from "../../Module/Tracks/TracksGroup";
+
 export const Queue: React.FC = () => {
-  // const params = useParams();
+  let { guildId } = useParams();
 
-  // console.log(params);
-
-  return <div>Queue</div>;
+  return <TracksGroup id={guildId as string} />;
 };
 
 export default Queue;

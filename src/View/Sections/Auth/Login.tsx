@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FormGroup } from "../../Module/Form/FormGroup";
-import { useAuthLogin } from "../../../Api/Auth/useAuthLogin";
+import { useAuthLogin } from "../../../Api/Auth/useAuth";
 import { error } from "console";
 
 export const Login: React.FC = () => {
