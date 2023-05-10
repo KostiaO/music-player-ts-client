@@ -1,14 +1,20 @@
-const URL = 'http://localhost:3000/auth/register';
+import { TAuthReturn, TAuthUser } from "../../Types/Api/auth";
 
-export const authLogin = async (postData: any) => {
-    const response = await fetch(URL, {
-        method: "POST",
-        mode: "cors",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(postData)
-    });
+const URL = "http://localhost:3000/auth/";
 
-    return response.json();
-}
+export const authLogin = async (
+  postData: TAuthUser,
+  type: "login" | "register"
+): Promise<TAuthReturn> => {
+  const response = await fetch(URL + type, {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "same-origin",
+    body: JSON.stringify(postData),
+  });
+
+  return response.json();
+};
