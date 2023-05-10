@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { FormGroup } from "../../Module/Form/FormGroup";
 import { useAuthLogin } from "../../../Api/Auth/useAuth";
-import { error } from "console";
+import { useCookies } from "react-cookie";
 
 export const Login: React.FC = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
 
   const [authType, setAuthType] = useState<"login" | "register" | null>(null);
+
+  const [cookies, setCookie, removeCookie] = useCookies(["JWT"]);
 
   const { loginData, loginError, loginFetch } = useAuthLogin(
     {
@@ -27,7 +29,11 @@ export const Login: React.FC = () => {
 
   useEffect(() => {
     if (loginData) {
-      console.log(loginData);
+      if (loginData.hasOwnProperty("accessToken")) {
+        setCookie("JWT", {
+          accessToken: loginData.accessToken,
+        });
+      }
     }
 
     if (loginError) {
