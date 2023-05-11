@@ -1,0 +1,32 @@
+.tracks-group {
+  height: calc(100vh - 140px);
+  overflow-y: scroll;
+}
+
+.track-el {
+  background-color: #212121;
+  &:not(:first-child) {
+    border-top: 1px solid #19171c;
+  }
+  ul {
+    padding: 30px 20px;
+    display: flex;
+    justify-content: space-between;
+    li {
+      color: white;
+      width: 30%;
+      list-style: none;
+      a {
+        color: white;
+        text-decoration: none;
+        transition: 0.2s;
+        &:hover {
+          color: #5e3486;
+        }
+      }
+      &:last-child {
+        text-align: right;
+      }
+    }
+  }
+}

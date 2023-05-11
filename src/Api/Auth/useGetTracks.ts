@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 import { TGetTracksData } from "../../Types/Api/getTrack";
-import { getTracks } from "../../Queries/getTracks/getTracks";
+import { getTracks } from "../../Queries/Tracks/getTracks";
 
 export const useTracks = (
   postData: TGetTracksData,

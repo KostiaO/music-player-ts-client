@@ -1,0 +1,18 @@
+.player {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #000000;
+  ul {
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+    margin: auto;
+    padding: 50px;
+    li {
+      color: white;
+      font-size: 40px;
+      font-weight: 900;
+    }
+  }
+}

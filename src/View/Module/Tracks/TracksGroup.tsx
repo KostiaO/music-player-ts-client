@@ -1,7 +1,9 @@
-import { useTracks } from "../../../Api/Auth/useTracks";
+import { useTracks } from "../../../Api/Auth/useGetTracks";
 import { TGetTracksReturn, TTrackEl } from "../../../Types/Api/getTrack";
 import TrackEl from "./TrackEl/Track";
 import { useEffect, useState } from "react";
+import "./TracksGroup.scss";
+import { socket } from "../../../socket";
 
 interface Props {
   id: string;
@@ -9,11 +11,16 @@ interface Props {
 
 export default function TracksGroup(props: Props) {
   const { tracksData, tracksError, tracksFetch } = useTracks(props, "queue");
+
   const refresh = () => {
     tracksFetch();
   };
-
   useEffect(() => {
+    socket.on(props.id, () => {
+      setTimeout(() => {
+        refresh();
+      }, 500);
+    });
     refresh();
     console.log(tracksData);
   }, []);
@@ -26,7 +33,7 @@ export default function TracksGroup(props: Props) {
       {tracksData &&
         tracksData.library &&
         tracksData.library.map((track: TTrackEl) => <TrackEl {...track} />)}
-      <button onClick={refresh}>Refresh</button>
+      {/* <button onClick={refresh}>Refresh</button> */}
     </div>
   );
 }
